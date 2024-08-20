@@ -13,6 +13,20 @@ function Book(title, author, pages, read) {
 function addBookToLibrary(book) {
   myLibrary.push(book);
   console.table(myLibrary);
+
+  const container = document.querySelector(".container");
+
+  for (let i = 0; i < myLibrary.length; i++) {
+    const archives = document.createElement("div");
+    archives.className = "bookArchives";
+
+    const booklist = document.createElement("p");
+
+    booklist.innerText = `${myLibrary[i].title}: ${myLibrary[i].author}`;
+    archives.appendChild(booklist);
+
+    container.appendChild(archives);
+  }
 }
 
 const addbookbtn = document.querySelector("#addbook");
