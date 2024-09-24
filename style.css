@@ -116,3 +116,11 @@ h6 {
   color: #333;
   pointer-events: none;
 }
+
+.readButton,
+.removeButton {
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #dddddd;
+}

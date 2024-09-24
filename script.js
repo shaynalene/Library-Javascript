@@ -14,32 +14,54 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
   console.table(myLibrary);
 
-  const container = document.querySelector(".container");
+  displayLibrary();
+}
 
-  // Clear the container to prevent duplicate entries
-  container.innerHTML = "";
+function createButtonField(value, bookIndex) {
+  const fieldContainer = document.createElement("div");
+  fieldContainer.className = "fieldContainer";
 
-  for (let i = 0; i < myLibrary.length; i++) {
-    const archives = document.createElement("div");
-    archives.className = "bookCard";
+  if (value === "Finished" || value === "Unfinished") {
+    const readButton = document.createElement("button");
+    readButton.className = "readButton";
+    readButton.innerText = value;
 
-    // Create and style each property field
-    const titleField = createInputField("Title", myLibrary[i].title);
-    const authorField = createInputField("Author", myLibrary[i].author);
-    const pageField = createInputField("Page", myLibrary[i].pages);
-    const readField = createInputField(
-      "Read",
-      myLibrary[i].read ? "Yes" : "No"
-    );
+    if (value === "Finished") {
+      readButton.style.background = "#85ff81";
+    } else {
+      readButton.style.background = "#ff9090";
+    }
 
-    // Append the fields to the card
-    archives.appendChild(titleField);
-    archives.appendChild(authorField);
-    archives.appendChild(pageField);
-    archives.appendChild(readField);
+    readButton.addEventListener("click", function (e) {
+      myLibrary[bookIndex].read =
+        myLibrary[bookIndex].read === "Finished" ? "Unfinished" : "Finished";
 
-    container.appendChild(archives);
+      readButton.innerText = myLibrary[bookIndex].read;
+
+      if (myLibrary[bookIndex].read === "Finished") {
+        readButton.style.background = "#85ff81";
+      } else {
+        readButton.style.background = "#ff9090";
+      }
+    });
+
+    fieldContainer.appendChild(readButton);
+  } else if (value == "Remove") {
+    const removeButton = document.createElement("button");
+    removeButton.className = "removeButton";
+    removeButton.innerText = value;
+
+    removeButton.addEventListener("click", function (e) {
+      if (bookIndex > -1) {
+        myLibrary.splice(bookIndex, 1);
+        displayLibrary();
+      }
+    });
+
+    fieldContainer.appendChild(removeButton);
   }
+
+  return fieldContainer;
 }
 
 // Helper function to create an input-like field
@@ -80,8 +102,41 @@ addbookbtn.addEventListener("click", function (e) {
   const bookname = document.getElementById("Book").value;
   const bookauthor = document.getElementById("Author").value;
   const bookpages = document.getElementById("Page").value;
-  const bookread = document.getElementById("Read").value;
+  let bookread = document.getElementById("Read");
+  if (bookread.checked) {
+    bookread = "Finished";
+  } else {
+    bookread = "Unfinished";
+  }
   const newBook = new Book(bookname, bookauthor, bookpages, bookread);
   console.log(newBook.info());
   addBookToLibrary(newBook);
 });
+
+function displayLibrary() {
+  const container = document.querySelector(".container");
+
+  // Clear the container to prevent duplicate entries
+  container.innerHTML = "";
+
+  for (let i = 0; i < myLibrary.length; i++) {
+    const archives = document.createElement("div");
+    archives.className = "bookCard";
+
+    // Create and style each property field
+    const titleField = createInputField("Title", myLibrary[i].title);
+    const authorField = createInputField("Author", myLibrary[i].author);
+    const pageField = createInputField("Page", myLibrary[i].pages);
+    const readField = createButtonField(myLibrary[i].read, i);
+    const removeField = createButtonField("Remove", i);
+
+    // Append the fields to the card
+    archives.appendChild(titleField);
+    archives.appendChild(authorField);
+    archives.appendChild(pageField);
+    archives.appendChild(readField);
+    archives.appendChild(removeField);
+
+    container.appendChild(archives);
+  }
+}
