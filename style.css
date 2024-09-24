@@ -1,0 +1,118 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  font-size: 20px;
+  font-family: "Lato", sans-serif;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* END OF CSS RESET */
+
+.navbar {
+  background-color: rgb(70, 42, 8);
+  color: rgb(242, 232, 232);
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.main {
+  height: 80vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.bookArchives {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  background-color: rgb(203, 203, 203);
+  max-height: 10rem;
+  max-width: 10rem;
+  flex-wrap: wrap;
+}
+
+#showForm {
+  background-color: rgb(210, 192, 170);
+  color: rgb(78, 35, 35);
+  font-size: 18px;
+  padding: 10px;
+}
+
+.bookCard {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 20rem;
+}
+
+.fieldContainer {
+  margin-bottom: 12px;
+}
+
+.fieldLabel {
+  font-weight: bold;
+  margin-bottom: 4px;
+  display: block;
+  font-family: Arial, sans-serif;
+}
+
+.fieldValue {
+  border: 1px solid #ddd;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #fff;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  color: #333;
+  pointer-events: none;
+}

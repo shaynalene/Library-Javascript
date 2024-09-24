@@ -4,19 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shaynalene | Library (Odin Project)</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <p>Library</p>
-    <form id="addbookform">
-      <input id="Book" />
-      <input id="Page" />
-      <input id="Author" />
-      <input id="Read" />
-    </form>
-    <button id="addbook">ADD BOOK</button>
-
-    <p>Added books</p>
-    <div class="container"></div>
+    <div class="navbar">
+      <div class="title">Library Archives</div>
+      <button id="showForm">+ Add A New Book</button>
+    </div>
+    <div class="main">
+      <p>Added books</p>
+      <div class="container"></div>
+      <dialog>
+        <button autofocus>Close</button>
+        <form method="dialog" id="addbookform">
+          <p>ADD A NEW BOOK</p>
+          <div class="iptstyle">Title: <input id="Book" /></div>
+          <div class="iptstyle">Author: <input id="Author" /></div>
+          <div class="iptstyle">Pages: <input id="Page" /></div>
+          <div class="iptstyle">Read: <input id="Read" /></div>
+        </form>
+        <button id="addbook">ADD BOOK</button>
+      </dialog>
+    </div>
   </body>
   <script src="script.js"></script>
 </html>
